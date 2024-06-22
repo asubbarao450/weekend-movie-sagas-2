@@ -5,12 +5,24 @@ import './DetailList.css';
 
 function DetailList() {
 
+  const history = useHistory();
   const dispatch = useDispatch();
-  const movie = useSelector(store => store.movie);
+  let movie = useSelector(store => store.movie);
+  
 
   useEffect(() => {
-    dispatch({ type: 'FETCH_MOVIES' });
+    dispatch({ type: 'FETCH_MOVIES'});
   }, []);
+
+  let handleClick = () => {
+
+    
+    
+        dispatch({type:'FETCH_MOVIE', payload: 0})
+    
+        history.push('/')
+    
+      }
 
   return (
     <main>
@@ -18,13 +30,12 @@ function DetailList() {
       <section className="movie">
         
           
-            <div data-testid='movieItem' key={movie.id}>
-              <h3>{movie.title}</h3>
-              <img src={movie.poster} alt={movie.title}/>
-              <p>{movie.description}</p>
+            <div data-testid='movieItem'>
+              <h3>{movie}</h3>
+             
             </div>
           
-        
+        <button onClick={()=>handleClick()}>Return</button>
       </section>
     </main>
   );

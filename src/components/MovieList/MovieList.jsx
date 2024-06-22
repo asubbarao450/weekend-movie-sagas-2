@@ -5,6 +5,7 @@ import './MovieList.css';
 
 function MovieList() {
 
+  const history = useHistory();
   const dispatch = useDispatch();
   const movies = useSelector(store => store.movies);
 
@@ -13,7 +14,11 @@ function MovieList() {
   }, []);
 
 
-  let handleClick = () => {
+  let handleClick = (movid) => {
+
+//console.log("NOYTE", movid)
+
+    dispatch({type:'FETCH_MOVIE', payload: movid})
 
     history.push('/DetailList')
 
@@ -27,7 +32,7 @@ function MovieList() {
           return (
             <div data-testid='movieItem' key={movie.id}>
               <h3>{movie.title}</h3>
-              <img onClick={handleClick} src={movie.poster} alt={movie.title}/>
+              <img onClick={()=>handleClick(movie.id)} src={movie.poster} alt={movie.title}/>
             </div>
           );
         })}
