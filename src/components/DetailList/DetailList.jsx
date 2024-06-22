@@ -46,9 +46,6 @@ function DetailList() {
 
           <p>{JSON.stringify(genres)}</p>
 
-          <p>{genres.length > 0 && genres.name}</p>
-         
-
         </div>
 
         <button data-testid="toList" onClick={() => handleClick()}>Return</button>
