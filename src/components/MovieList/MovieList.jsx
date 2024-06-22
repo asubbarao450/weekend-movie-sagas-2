@@ -19,6 +19,8 @@ function MovieList() {
 
     dispatch({type:'FETCH_MOVIE', payload: movid})
 
+    dispatch({type:'FETCH_GENRE', payload: movid})
+
     history.push('/DetailList')
 
   }

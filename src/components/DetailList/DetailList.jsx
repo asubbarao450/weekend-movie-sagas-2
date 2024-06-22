@@ -8,9 +8,10 @@ function DetailList() {
   const history = useHistory();
   const dispatch = useDispatch();
   const movie = useSelector(store => store.movie);
+  const genres = useSelector(store => store.genres);
 
   //added for debuggging 
-  console.log(movie)
+  console.log(genres)
 
   useEffect(() => {
     dispatch({ type: 'FETCH_MOVIES' });
@@ -38,6 +39,9 @@ function DetailList() {
             <img data-testid="toDetails" src={movie[0].poster} />}
 
           <p>{movie.length > 0 && movie[0].description}</p>
+
+<br></br>
+          <p>Genres: {JSON.stringify(genres)}</p>
         </div>
 
         <button data-testid="toList" onClick={() => handleClick()}>Return</button>
