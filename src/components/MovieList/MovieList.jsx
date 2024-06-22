@@ -16,7 +16,6 @@ function MovieList() {
 
   let handleClick = (movid) => {
 
-//console.log("NOYTE", movid)
 
     dispatch({type:'FETCH_MOVIE', payload: movid})
 
@@ -32,7 +31,7 @@ function MovieList() {
           return (
             <div data-testid='movieItem' key={movie.id}>
               <h3>{movie.title}</h3>
-              <img onClick={()=>handleClick(movie.id)} src={movie.poster} alt={movie.title}/>
+              <img data-testid="toDetails" onClick={()=>handleClick(movie.id)} src={movie.poster} alt={movie.title}/>
             </div>
           );
         })}

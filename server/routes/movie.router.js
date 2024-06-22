@@ -25,9 +25,9 @@ router.get('/:id', (req, res) => {
   
   const query = `
     SELECT * FROM "movies"
-      WHERE "id" = $1;
+      WHERE "movies"."id" = $1;
   `;
-  
+
   pool.query(query, [newid])
     .then(result => {
       res.send(result.rows);
