@@ -10,8 +10,7 @@ function DetailList() {
   const movie = useSelector(store => store.movie);
   const genres = useSelector(store => store.genres);
 
-  //added for debuggging 
-  console.log(genres)
+  
 
   useEffect(() => {
     dispatch({ type: 'FETCH_MOVIES' });
@@ -24,6 +23,9 @@ function DetailList() {
 
   }
 
+  //I'm getting confused by why the JSON.stringify outputs genres
+  //while the map function doesnt work 
+  //Something related to how the object is being returned
   return (
     <main>
 
@@ -40,8 +42,13 @@ function DetailList() {
 
           <p>{movie.length > 0 && movie[0].description}</p>
 
-<br></br>
-          <p>Genres: {JSON.stringify(genres)}</p>
+          <br></br>
+
+          <p>{JSON.stringify(genres)}</p>
+
+          <p>{genres.length > 0 && genres.name}</p>
+         
+
         </div>
 
         <button data-testid="toList" onClick={() => handleClick()}>Return</button>

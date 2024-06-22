@@ -21,7 +21,7 @@ router.get('/', (req, res) => {
 
 router.get('/:id', (req, res) => {
   
-  newid = req.params.id
+  let newid = req.params.id
   
   const query = `
     SELECT * FROM "movies"
