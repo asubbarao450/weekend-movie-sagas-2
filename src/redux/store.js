@@ -23,6 +23,25 @@ function* fetchAllMovies() {
   }
 }
 
+
+function* fetchAMovie(action) {
+ 
+//the movid returns the movie id that was clicked
+ let movid = action.payload
+
+  try {
+    
+    //stores the specific movie that was clicked 
+    const movieResponse = yield axios.get(`/api/movies/${movid}`);
+    // Set the value of the movies reducer:
+    yield put({
+      type: 'SET_MOVIE',
+      payload: movieResponse.data
+    });
+  } catch (error) {
+    console.log('fetchAMovie error:', error);
+  }
+}
 // Create sagaMiddleware
 const sagaMiddleware = createSagaMiddleware();
 
@@ -30,6 +49,15 @@ const sagaMiddleware = createSagaMiddleware();
 const movies = (state = [], action) => {
   switch (action.type) {
     case 'SET_MOVIES':
+      return action.payload;
+    default:
+      return state;
+  }
+}
+
+const movie = (state = null, action) => {
+  switch (action.type) {
+    case 'SET_MOVIE':
       return action.payload;
     default:
       return state;

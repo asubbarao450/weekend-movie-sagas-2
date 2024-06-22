@@ -1,5 +1,6 @@
 import { Route, HashRouter as Router } from 'react-router-dom';
 import MovieList from '../MovieList/MovieList';
+import DetailList from '../DetailList/DetailList';
 import './App.css';
 
 function App() {
@@ -13,8 +14,13 @@ function App() {
         
         {/* Details page */}
 
-        {/* Add Movie page */}
+        <Route path="/DetailList" exact>
+          <DetailList/>
+        </Route>
+
         
+        
+
       </Router>
     </div>
   );
